@@ -3,4 +3,8 @@ In Caesar cipher, the set of plain text characters is replaced by any other char
 
 ## How to Use
 
-:>
+In the ceasar.py(the file which the algorithms lay) file, there are four functions:
+* encrypt(stringToEnc)
+* encrypt(stringToEnc, shift)
+* decrypt(stringToDec)
+* decrypt(stringToDec, shift)
