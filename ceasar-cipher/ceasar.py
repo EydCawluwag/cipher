@@ -38,8 +38,11 @@ def encSeq(stringToEnc,shift,seq):
 				out+=a[j]
 		out+=' '
 	return out
+
 def decryptSeq(stringToDec,seq):
 	alphabet=seq
 	for i in range(len(alphabet)):
 		if i<10:print(i,' :',encSeq(stringToDec,i,seq))
 		else:print(i,':',encSeq(stringToDec,i,seq))
+
+
