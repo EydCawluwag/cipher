@@ -19,6 +19,9 @@ def encryptWithSequence():
 def decryptWithSequence():
 	print('out',csr.decryptSeq(input('String to decrypt:'),input('Sequence for the decrypt:')))
 
+def shiftDecrypt():
+	print('out:',csr.decryptDef(input("String to decrypt:"),int(input('Shift for the decrypt:'))))
+
 def main(arg):
 	if arg=='decrypt':decrypt()
 	elif arg == 'decryptWithSequence':decryptWithSequence()
@@ -26,6 +29,7 @@ def main(arg):
 	elif arg == 'encryptFast': encryptFast()
 	elif arg == 'decryptFast': decryptFast()
 	elif arg == 'encryptWithSequence':encryptWithSequence()
+	elif arg == 'shiftDecrypt':shiftDecrypt()
 	else: print('Function not found')
 
 if __name__ == '__main__':
