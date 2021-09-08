@@ -33,7 +33,7 @@ print(enc)
 ```
 mjqqt 2twqi!
 ```
-... this is the ciphered/encrypted version of your string
+... this is the ciphered/encrypted version of your string.
   note: punctuation or other special characters wont be shifted 
 
 #### encDef()
