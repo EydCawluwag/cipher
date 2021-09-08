@@ -21,6 +21,7 @@ Ceasar cipher in default uses three(3) shifts in every letter of the word you wa
 
 
 ## Usage
+#### enc()
 enc() function. Takes two arguments: stringToEnc, shift
 ```python
 import ceasar
@@ -35,6 +36,7 @@ mjqqt 2twqi!
 ... this is the ciphered/encrypted version of your string
   note: punctuation or other special characters wont be shifted 
 
+#### encDef()
 encDef() on the other hand stand for default encryption which is a string which letters are shifted 3 positions to the right.
 encDef() function, Takes one argument: stringToEnc
 ```python
@@ -48,7 +50,8 @@ print(out)
 khoor zruog!
 ```
   note: the characters will all be small caps when encrypted
-  
+
+#### decrypt()
 decrypt() function just takes one argument and start a brute force attack to your string.
 It lets the user(you) to pick one from the 26 brute force results, if theres any word that makes sense to u
   note: only one should be the correct result u pick out of the 26 variations
@@ -90,3 +93,185 @@ ceasar.decrypt("khoor zruog!")
 Try it yourself, encrypt a word using the enc() function and choose the number of shifts or the encMod() function which by default shift your string at three positions, and decrypt it using the decrypt() function and find the original word! 
 
 Have fun :)
+
+
+Update: I added some features
+
+### Updated features
+
+#### modifying the alphabet sequence of the program
+
+  I've made a feature that will allow u to modify the sequence of your cipher whatever u want.
+  * encSeq()
+  * decryptSeq()
+  these are the functions
+  
+ 
+### encSeq()
+  encSeq() function takes three arguments: stringToEnc,shift,sequence
+  
+### decryptSeq()
+  decryptSeq() function takes two: stringToDec,sequence
+  
+both function works the same as the original, except for their sequences that u can modify :)
+ 
+ 
+### here is the step-by-step guide
+
+in order to use the function u need to add or make a new sequence that u will use.
+the default sequence is "ABCDEFGHIJKLMNOPQRSTUVWXYZ", so if u wanted to add some like if u have a number in your string that u want to encrypt, just add "0123456789" on the list.
+
+First import the ceasar file,
+```python
+import ceasar as csr
+```
+and if u look at its sequence
+```python
+print(csr.sequence)
+```
+the result would be a list from a to z
+```
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+```
+so if u have a number in your string, u need to add the numbers at the end of the list
+so we make a new variable list and using the default sequence, lets add the numbers at the end of the sequence
+```python
+newSequence=csr.sequence + list("0123456789".lower()) #u can add anything u like but for this sample well just use the numbers
+```
+note: u need to set the string to lower caps 
+u can check the number by printing if the numbers really do add up to the list
+
+next is we'll go to the functions
+for example we have a string "HelloMicTest12345" and shift it at 23 , we cannot encrypt this string using the original functions because there are numbers present on the string. So we need to add numbers to the sequence which we already did at the top. So whats left is to input those sequence into the function and encrypt out string.
+```python
+out=csr.encSeq('HelloMicTest12345',23,sequence)#our string, our shift, our sequence that we made earlier
+print(out)
+```
+now the results should be this
+```
+4188b95zg1fgopqrs
+```
+an encrypted version of your string with numbers. COOL
+
+now then, we already have the encrypted version of our string, what we want now is to decrypt it. we'll use this method
+```python
+out = csr.decryptSeq('4188b95zg1fgopqrs',newSequence)# our encrypted word, our new sequence
+print(out)
+```
+note: make sure that the sequence is the same as the one used to encrypt the string
+the output should be...
+```
+0  : 4188b95zg1fgopqrs
+1  : 5299ca60h2ghpqrst
+2  : 63aadb71i3hiqrstu
+3  : 74bbec82j4ijrstuv
+4  : 85ccfd93k5jkstuvw
+5  : 96ddgea4l6kltuvwx
+6  : a7eehfb5m7lmuvwxy
+7  : b8ffigc6n8mnvwxyz
+8  : c9ggjhd7o9nowxyz0
+9  : dahhkie8paopxyz01
+10 : ebiiljf9qbpqyz012
+11 : fcjjmkgarcqrz0123
+12 : gdkknlhbsdrs01234
+13 : hellomictest12345
+14 : ifmmpnjduftu23456
+15 : jgnnqokevguv34567
+16 : khoorplfwhvw45678
+17 : lippsqmgxiwx56789
+18 : mjqqtrnhyjxy6789a
+19 : nkrrusoizkyz789ab
+20 : olssvtpj0lz089abc
+21 : pmttwuqk1m019abcd
+22 : qnuuxvrl2n12abcde
+23 : rovvywsm3o23bcdef
+24 : spwwzxtn4p34cdefg
+25 : tqxx0yuo5q45defgh
+26 : uryy1zvp6r56efghi
+27 : vszz20wq7s67fghij
+28 : wt0031xr8t78ghijk
+29 : xu1142ys9u89hijkl
+30 : yv2253ztav9aijklm
+31 : zw33640ubwabjklmn
+32 : 0x44751vcxbcklmno
+33 : 1y55862wdycdlmnop
+34 : 2z66973xezdemnopq
+35 : 3077a84yf0efnopqr
+None
+```
+Now notice the string at number 13, that string is the same ass the original non-encrypted string! just that easy! now u know how to modify the sequence at your will.
+Because of this feature ceasar-cipher can be hard to crack because the sequence that u will make will always be needed to crack your encrypted string. It will be more hard to crack. Plus the shift u set to the sequence. u will need two keys to unlock a encrypted string, the key shift, and the key sequence. Ha, much harder thank you for reading. this maybe the last feature or maybe not, who knows, ill probably move on to a new cipher. Im proud for this repo, i learned a lot. good work myself. 
+
+
+
+
+This is the whole code for the update-series
+```python
+#import ceasar
+import ceasar as csr
+
+#check the default sequence
+print(csr.sequence)
+
+#create the new sequence
+newSequence = csr.sequence + list("0123456789".lower())
+
+print()
+#encrypt your string using the newSequence
+encrypt=csr.encSeq('HelloMicTest12345',23,newSequence)#our string, our shift, our sequence that we made earlier
+print(encrypt,'\n')
+
+
+#decrypt your encrypted string
+decrypt = csr.decryptSeq(encrypt,newSequence)# our encrypted word, our new sequence
+print(decrypt)
+```
+
+```
+#default sequence
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+#encrypted String
+4188b95zg1fgopqrs
+
+# decrypt the String
+0  : 4188b95zg1fgopqrs
+1  : 5299ca60h2ghpqrst
+2  : 63aadb71i3hiqrstu
+3  : 74bbec82j4ijrstuv
+4  : 85ccfd93k5jkstuvw
+5  : 96ddgea4l6kltuvwx
+6  : a7eehfb5m7lmuvwxy
+7  : b8ffigc6n8mnvwxyz
+8  : c9ggjhd7o9nowxyz0
+9  : dahhkie8paopxyz01
+10 : ebiiljf9qbpqyz012
+11 : fcjjmkgarcqrz0123
+12 : gdkknlhbsdrs01234
+13 : hellomictest12345
+14 : ifmmpnjduftu23456
+15 : jgnnqokevguv34567
+16 : khoorplfwhvw45678
+17 : lippsqmgxiwx56789
+18 : mjqqtrnhyjxy6789a
+19 : nkrrusoizkyz789ab
+20 : olssvtpj0lz089abc
+21 : pmttwuqk1m019abcd
+22 : qnuuxvrl2n12abcde
+23 : rovvywsm3o23bcdef
+24 : spwwzxtn4p34cdefg
+25 : tqxx0yuo5q45defgh
+26 : uryy1zvp6r56efghi
+27 : vszz20wq7s67fghij
+28 : wt0031xr8t78ghijk
+29 : xu1142ys9u89hijkl
+30 : yv2253ztav9aijklm
+31 : zw33640ubwabjklmn
+32 : 0x44751vcxbcklmno
+33 : 1y55862wdycdlmnop
+34 : 2z66973xezdemnopq
+35 : 3077a84yf0efnopqr
+None
+```
+
+
