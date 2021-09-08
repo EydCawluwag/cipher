@@ -18,6 +18,10 @@ def enc(stringToEnc,shift):
 def encDef(stringToEnc):
 	return enc(stringToEnc,3)
 
+def decryptDef(stringToDec,shift):
+	alphabet=sequence
+	return enc(stringToDec,26-shift)
+
 def decrypt(stringToDec):
 	alphabet=sequence
 	for i in range(len(sequence)):
