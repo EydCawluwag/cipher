@@ -3,10 +3,15 @@ In Caesar cipher, the set of plain text characters is replaced/shifted by any ot
 
 ## Introduction
 
+
+
 In the ceasar.py(the file which the algorithms lay) file, there are three functions:
 * enc(stringToEnc, shift)
 * encDef(stringToEnc)
 * decrypt(stringToDec)
+* decryptDef(StringToDec)
+
+###### note: ceasar.py is located at src/ceasar.py
 
 Ceasar cipher in default uses three(3) shifts in every letter of the word you want to cipher.
 
@@ -89,6 +94,11 @@ ceasar.decrypt("khoor zruog!")
 25 : jgnnq yqtnf!
 ```
 ... you need to find the word within these variations. In this example we found that at number 23(at brute force number 23) we found the only sensible word out of all the choices. So therefore the original string of "khoor zruog!" is at 23 : "hello world!"
+
+
+#### decryptDef()
+  decryptDef() function works like the original decrypt but only returns the 26-default-shift(3)th of the brute force because it is the original string shifted by default(3)
+
 
 Try it yourself, encrypt a word using the enc() function and choose the number of shifts or the encMod() function which by default shift your string at three positions, and decrypt it using the decrypt() function and find the original word! 
 
