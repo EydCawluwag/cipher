@@ -19,11 +19,11 @@ def algShift(arrToShift,shift):
 def enc(stringToEnc):
 	a,b,c,d,e,f=initialShift,periodicIncrement,periodLength,len(stringToEnc),mobilis,stabilis
 	for i in range(int(d/c)):
-		e=shift(e,b)
+			e=shift(e,b)
 		print(e)
 
 def dec(stringToDec):
-	pass
+	
 
 
 
